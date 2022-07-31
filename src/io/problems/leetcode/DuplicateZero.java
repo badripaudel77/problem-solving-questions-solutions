@@ -25,7 +25,7 @@ public class DuplicateZero {
                 for (int j = capacity -1 ; j > i; j--) {
                     numbers[j] = numbers[j - 1];
                 }
-                i++; // increment so that old value doesn't override all values.
+                i++; // don't duplicate the zero which was from the last duplication , so do ++ i
             }
         }
     }
