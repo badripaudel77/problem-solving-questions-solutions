@@ -19,22 +19,14 @@ public class CommonChar {
     }
 
     private static int commonChar(String strOne, String strTwo) {
-        int len1 = strOne.length();
-        int len2 = strOne.length();
         int count = 0;
 
-        char charArr1[] = new char[len1];
-        char charArr2[] = new char[len2];
+        char charArr1[] = strOne.toCharArray();
+        char charArr2[] = strTwo.toCharArray();
 
-        for(int i = 0; i< len1; i++) {
-            charArr1[i] = strOne.charAt(i);
-        }
-        for(int i = 0; i< len2; i++) {
-            charArr2[i] = strTwo.charAt(i);
-        }
 
-         for(int i = 0; i< len1; i++) {
-             for(int j = 0; j< len2; j++) {
+         for(int i = 0; i< charArr1.length; i++) {
+             for(int j = 0; j< charArr2.length; j++) {
                  if(charArr1[i] == charArr2[j]) {
                      charArr2[j] = ' ';
                      count++;
