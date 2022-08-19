@@ -4,6 +4,12 @@ package io.problems.leetcode;
  * rear position to insert : rear = (rear + 1) % queue.length;
  * front position to insert : rear = (front + 1) % queue.length;
  * REF How Circular Queue Works ? : https://www.programiz.com/dsa/circular-queue
+ * Java has 'Built-In' queue implementation. for eg :
+ * Queue<Integer> queue = new LinkedList<>();
+ * queue.add(intValue); // to insert
+ * queue.poll(); // to pop the element
+ * queue.peek(); // gets the top element
+ * when we want to process the elements in the order of their arrival, then queue is a good fit.
  */
 
 public class CircularQueue {
