@@ -1,7 +1,7 @@
 package io.problems.general_problems;
 
 /*
-codesignlas Problem : https://app.codesignal.com/arcade/intro/level-3/JKKuHJknZNj4YGL32
+code signals Problem : https://app.codesignal.com/arcade/intro/level-3/JKKuHJknZNj4YGL32
 Given two strings, find the number of common characters between them.
 
 Example :
