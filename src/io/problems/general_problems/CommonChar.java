@@ -1,7 +1,7 @@
 package io.problems.general_problems;
 
 /*
-codesignlas Problem : https://app.codesignal.com/arcade/intro/level-3/JKKuHJknZNj4YGL32
+codesignals Problem : https://app.codesignal.com/arcade/intro/level-3/JKKuHJknZNj4YGL32
 Given two strings, find the number of common characters between them.
 
 Example :
@@ -13,7 +13,7 @@ import java.util.Arrays;
 
 public class CommonChar {
     public static void main(String[] args) {
-        String strOne = "aabcc";
+        String strOne = "aaadbcc";
         String strTwo = "adcaa";
         System.out.println("No of common chars in " + strOne + " and " + strTwo + " is : " + commonChar(strOne, strTwo));
     }
@@ -30,6 +30,7 @@ public class CommonChar {
                  if(charArr1[i] == charArr2[j]) {
                      charArr2[j] = ' ';
                      count++;
+                     break; // If avoid checking other char if match is already found.
                  }
              }
          }
