@@ -1,8 +1,6 @@
 package io.problems.leetcode;
 
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Hashtable;
 import java.util.Set;
 
 /*

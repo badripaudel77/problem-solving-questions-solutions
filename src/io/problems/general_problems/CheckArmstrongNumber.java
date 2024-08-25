@@ -14,7 +14,6 @@ public class CheckArmstrongNumber {
         double sum = 0;
         int remainder;
         num = number;
-
         while (number !=0) {
           remainder = number % 10; // remainder
           sum = sum + Math.pow(remainder, 3);
