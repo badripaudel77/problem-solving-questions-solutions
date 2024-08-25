@@ -30,7 +30,7 @@ public class CommonChar {
                  if(charArr1[i] == charArr2[j]) {
                      charArr2[j] = ' ';
                      count++;
-                     break; // If avoid checking other char if match is already found.
+                     break; // Avoid checking other characters if match is already found.
                  }
              }
          }
