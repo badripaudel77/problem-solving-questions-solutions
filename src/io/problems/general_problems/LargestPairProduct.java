@@ -20,6 +20,7 @@ public class LargestPairProduct {
     }
 
     // O(n^2)
+    // This is good when negative elements are also allowed.
     private static int calculateProduct(int[] arr, int len) {
         if(len < 2) {
             throw new IllegalArgumentException("Length must be greater than 1 (At least two required for product).");
@@ -63,11 +64,37 @@ public class LargestPairProduct {
         return largest * secondLargest;
     }
 
+    private static int largestProductWithTwoSequentialLoops(int[] arr) {
+        int len = arr.length;
+        int max = Integer.MIN_VALUE;
+        int maxIndex = 0;
+        int secondMax = Integer.MIN_VALUE;
+
+        // O(n)
+        for (int i = 0; i< len; i++) {
+            if(arr[i] > max) {
+                max = arr[i];
+                maxIndex = i;
+            }
+        }
+
+        // O(n)
+        for (int i = 0; i< len; i++) {
+            if(i != maxIndex && arr[i] > secondMax) {
+                secondMax = arr[i];
+            }
+        }
+        // Time Complexity = O(n) + O(n) = O(2n) = O(n) , constant value is disregarded when loops are sequential.
+        return max * secondMax;
+    }
+
     public static void main(String[] args) {
         int arr [] = { 1,5,8,3,10 };
         System.out.println("Original Array is >>> " + Arrays.toString(arr));
 
         System.out.println("Largest product is : >>> " + largestProduct(arr));
         System.out.println("Giving you the largest product: " + giveMeLargestProduct(arr));
+
+        System.out.println("Product with sequential loops: " + largestProductWithTwoSequentialLoops(arr));
     }
 }
