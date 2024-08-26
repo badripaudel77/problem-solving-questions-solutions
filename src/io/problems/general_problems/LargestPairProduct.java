@@ -1,26 +1,31 @@
 package io.problems.general_problems;
 /*
   Problem : Given an array with n items, job is to find the largest possible product from a pair within that array.
-            array [] = { 1,5,8,3,10 } => Largest Product is : 10 * 8 = 80
+            Given following array:
+            1 -> [ 1,5,8,3,10 ] => Should give 10 * 8 = 80
+            NOTE: Imagine array integers will be only positive.
 */
 
 import java.util.Arrays;
 public class LargestPairProduct {
 
-    private static void largestProduct(int arr[]) {
+    private static int largestProduct(int arr[]) {
          int len = arr.length;
-         if(len < 1) {
+         if(len < 2) {
             System.out.println("Please Provide at least two elements.");
-            return;
+            throw new IllegalArgumentException("Pass at least two elements");
         }
          int result = calculateProduct(arr, len);
-         System.out.println("Largest Product is : " + result);
+         return result;
     }
 
     // O(n^2)
     private static int calculateProduct(int[] arr, int len) {
+        if(len < 2) {
+            throw new IllegalArgumentException("Length must be greater than 1 (At least two required for product).");
+        }
         int i, j;
-        int largestProduct = 1;
+        int largestProduct = arr[0] * arr[len - 1];
 
         // O(n)
         for (i = 0; i < len; i++) {
@@ -34,20 +39,35 @@ public class LargestPairProduct {
         return largestProduct;
     }
 
-    // let's do it in more optimized way
+    // nlog(n)
     private static int calculateLargestProduct(int [] arr, int len) {
         if(len < 2) return -1;
         Arrays.sort(arr); // nlog(n)
         return arr[len -1] * arr[len -2]; // largest product.
     }
 
-    public static void main(String[] args) {
-        int arr [] = { 100,5,8,3,10,12,15 };
-        System.out.println("Original Array is : " + Arrays.toString(arr));
-        largestProduct(arr);
+    // More efficiently
+    // O(n) -> In a single pass.
+    private static int giveMeLargestProduct(int [] arr) {
+        int largest = Integer.MIN_VALUE;
+        int secondLargest = Integer.MIN_VALUE;
 
-        System.out.println("Using optimized method");
-        System.out.println("Original Array is : " + Arrays.toString(arr));
-        System.out.println("Result is : " + calculateLargestProduct(arr, arr.length));
+        for (int num : arr) {
+            if (num > largest) {
+                secondLargest = largest; // Update second largest with the previous largest because we've found new largest
+                largest = num;
+            } else if (num > secondLargest && num != largest) {
+                secondLargest = num;
+            }
+        }
+        return largest * secondLargest;
+    }
+
+    public static void main(String[] args) {
+        int arr [] = { 1,5,8,3,10 };
+        System.out.println("Original Array is >>> " + Arrays.toString(arr));
+
+        System.out.println("Largest product is : >>> " + largestProduct(arr));
+        System.out.println("Giving you the largest product: " + giveMeLargestProduct(arr));
     }
 }
